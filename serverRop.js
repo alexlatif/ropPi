@@ -22,6 +22,7 @@ client.on('connect', () => {
 client.on('message', (topic, message) => {
     // message is Buffer
     if (message === "0") {
+        console.log("inside message 0")
         client.publish("Xcharge/switch", "False")
     } else {
         client.publish("Xcharge/switch", "True")
