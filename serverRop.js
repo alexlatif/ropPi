@@ -19,9 +19,8 @@ client.on('connect', () => {
     client.subscribe('flow')
 })
 
-client.on('flow', (start, message) => {
+client.on('message', (topic, message) => {
     // message is Buffer
-    client.publish('test', 'ok')
     console.log(message.toString())
     client.end()
 })
