@@ -21,7 +21,7 @@ client.on('connect', () => {
 
 client.on('message', (topic, message) => {
     // message is Buffer
-    client.publish("Xcharge/switch", True)
+    client.publish("Xcharge/switch", "True")
     console.log(message.toString())
     client.end()
 })
