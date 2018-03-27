@@ -27,7 +27,6 @@ client.on('message', (topic, message) => {
         client.publish("Xcharge/switch", "True")
     }
     console.log(message.toString())
-    client.end()
 })
 
 
