@@ -21,6 +21,7 @@ client.on('connect', () => {
 
 client.on('message', (start, message) => {
     // message is Buffer
+    client.publish('test', 'ok')
     console.log(message.toString())
     client.end()
 })
