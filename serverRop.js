@@ -7,26 +7,23 @@ const app = express();
 // Serve up content from public directory
 app.use(express.static(__dirname + '/public'));
 
+var mqtt = require('mqtt')
+var client = mqtt.connect('mqtt://test.mosquitto.org')
+
 var ropstenContract;
 
 var timeOut;
 var runningPi = ''
 
-
-app.get('/start', (req, res) => {
-    runningPi = 'B';
-    //TODO: validate fund sufficiency and time limit
-
-    //TODO: start function 
-
-    //TODO: take deposit to rinkeby 
-    //TODO: call rinkeby node
+client.on('connect', () => {
+    client.subscribe('flow')
 })
 
-app.get('/stop', (req, res) => {
-    //TODO: stop running pi
-
-    //TODO: reclaim remaining funds
+client.on('message', (start, message) => {
+    // message is Buffer
+    console.log(message.toString())
+    client.end()
 })
+
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
