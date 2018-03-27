@@ -16,16 +16,16 @@ var timeOut;
 var runningPi = ''
 
 client.on('connect', () => {
-    client.subscribe('flow')
+    client.subscribe('flowA')
 })
 
 client.on('message', (topic, message) => {
     // message is Buffer
     if (message.toString() === "0") {
         console.log("inside message 0")
-        client.publish("Xcharge/switch", "False")
+        client.publish("Xcharge/switchA", "False")
     } else {
-        client.publish("Xcharge/switch", "True")
+        client.publish("Xcharge/switchA", "True")
     }
     console.log(message.toString())
 })
