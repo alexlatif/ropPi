@@ -23,8 +23,9 @@ client.on('message', (topic, message) => {
     // message is Buffer
     if (message === "0") {
         client.publish("Xcharge/switch", "False")
+    } else {
+        client.publish("Xcharge/switch", "True")
     }
-    client.publish("Xcharge/switch", "True")
     console.log(message.toString())
     client.end()
 })
